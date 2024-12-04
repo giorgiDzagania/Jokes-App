@@ -33,14 +33,14 @@ class JokesRepositoryImpl : JokesRepository {
     // dbo to jokes
     override suspend fun getAllSavedJokes(): OperationStatus<List<Jokes>> {
         return NetworkCallHelper.safeRoomCall {
-            jokeDao.getAllJokes().map { it.toJokes() } // Use the corrected mapping function
+            jokeDao.getAllJokes().map { it.toJokes() }
         }
     }
 
     // joke to dbo
     override suspend fun deleteJoke(joke: Jokes): OperationStatus<Unit> {
         return NetworkCallHelper.safeRoomCall {
-            jokeDao.deleteJoke(joke.toJokeDbo())  // Convert the Joke to JokeDbo and delete from the database
+            jokeDao.deleteJoke(joke.toJokeDbo())
         }
     }
 
